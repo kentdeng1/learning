@@ -1,0 +1,41 @@
+# WorkBuddy 临时文件
+*.tmp
+*.swp
+*~
+*.bak
+
+# 编辑器
+.vscode/
+.idea/
+*.iml
+*.code-workspace
+
+# 编译输出
+build/
+out/
+*.o
+*.obj
+*.exe
+*.bin
+*.hex
+*.elf
+*.map
+
+# CubeIDE 输出
+Debug/
+Release/
+
+# Keil 输出
+Objects/
+Listings/
+*.uvguix.*
+*.scvd
+
+# 操作系统
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 日志和缓存
+*.log
+.cache/
