@@ -1,4 +1,4 @@
-# install-alias.ps1
+﻿# install-alias.ps1
 # 用途：在 PowerShell profile 里添加 acp 别名
 # 使用：.\install-alias.ps1
 # 效果：之后可以在任何 PowerShell 窗口里直接用 acp 代替 .\sync.ps1

@@ -1,4 +1,4 @@
-# sync.ps1
+﻿# sync.ps1
 # 用途：简化的 git 同步（pull + add + commit + push）
 #
 # 用法（在项目目录下）：

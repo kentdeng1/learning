@@ -105,10 +105,31 @@ git commit -m "$COMMIT_MSG"
 
 # 6. Push
 step "推送到 origin..."
-if git push; then
+PUSH_OUTPUT=$(git push 2>&1)
+PUSH_EXIT=$?
+
+if [ $PUSH_EXIT -eq 0 ]; then
     ok "完成: $COMMIT_MSG"
 else
     err "Push 失败"
-    warn "如需先 pull: 跑 ./sync.sh -Pull"
+    echo ""
+    dim "$PUSH_OUTPUT"
+    echo ""
+
+    # 检测常见的失败原因
+    if echo "$PUSH_OUTPUT" | grep -q "non-fast-forward"; then
+        warn "原因：远端有本地没有的 commit（通常是仓库建时 GitHub 自动生成的 Initial commit）"
+        warn ""
+        warn "解决方法（二选一）："
+        warn "  强制推送（覆盖远端）:  git push -u origin main --force"
+        warn "  合并后推送（保留远端）:  git pull origin main --rebase && git push -u origin main"
+    elif echo "$PUSH_OUTPUT" | grep -q "Permission denied\|authentication"; then
+        warn "原因：认证失败"
+        warn "解决方法：配置 SSH key 或用 Personal Access Token（不是密码）"
+    elif echo "$PUSH_OUTPUT" | grep -q "Could not resolve host\|failed to connect"; then
+        warn "原因：网络问题"
+        warn "解决方法：检查网络后重试"
+    fi
+
     exit 1
 fi

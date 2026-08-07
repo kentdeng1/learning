@@ -1,4 +1,4 @@
-# auto-watch.ps1
+﻿# auto-watch.ps1
 # 用途：监视项目目录，文件变化 30 秒后自动提交
 # 用法：.\auto-watch.ps1
 # 停止：Ctrl + C
