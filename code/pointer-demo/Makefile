@@ -9,7 +9,7 @@
 
 CC      := gcc
 CFLAGS  := -Wall -Wextra -O0 -std=c11 -g -D_WIN32_WINNT=0x0601 -D__USE_MINGW_ANSI_STDIO=1
-TARGET  := hello
+TARGET  := pointer-demo	
 SRC     := main.c
 
 # 默认目标
