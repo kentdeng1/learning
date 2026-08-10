@@ -1,0 +1,7 @@
+# 构建产物
+build/
+*.exe
+*.o
+
+# 下载的压缩包（保留解压后的源码即可）
+book-code/programs.zip
