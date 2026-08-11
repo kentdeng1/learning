@@ -19,7 +19,12 @@
  *   MIN(2+1, 4)            -> 3
  *   MIN(x++, y++)          -> 不会让 x/y 多加
  * ============================================ */
-#define MIN(a, b)    (a)<(b)?(a):(b)/* TODO: K 实现 */
+#define MIN(a, b) \
+    ({                                  \
+        __typeof__(a) _a = (a);         \
+        __typeof__(b) _b = (b);         \
+        _a < _b ? _a : _b;              \
+    })
 
 
 /* ============================================
@@ -31,7 +36,7 @@
  *   BIT(3)                 -> 8
  *   BIT(31)                -> 0x80000000 (注意符号!)
  * ============================================ */
-#define BIT(n)   return  1<<n/* TODO: K 实现 */
+#define BIT(n)       (1U << (n))
 
 
 /* ============================================
@@ -43,7 +48,7 @@
  *   ARRAY_SIZE(arr)        -> 5
  *   ARRAY_SIZE("hello")    -> 6 (含 '\0')
  * ============================================ */
-#define ARRAY_SIZE(arr) return sizeof(arr)/sizeof((arr)[0]) /* TODO: K 实现 */
+#define ARRAY_SIZE(arr)  (sizeof(arr) / sizeof((arr)[0]))
 
 
 /* ============================================
@@ -57,7 +62,8 @@
  *
  * 进阶：用 2 层宏展开（直接 #x 不能展开宏参数）
  * ============================================ */
-#define STRINGIFY(x) /* TODO: K 实现 */
+#define STRINGIFY_INNER(x) #x
+#define STRINGIFY(x)       STRINGIFY_INNER(x)
 
 
 /* ============================================
@@ -67,7 +73,7 @@
  * 测试预期见 main() 里 struct Foo 的例子
  * ============================================ */
 #define container_of(ptr, type, member) \
-    /* TODO: K 实现 */
+    ((type *)((char *)(ptr) - offsetof(type, member)))
 
 
 struct Foo {
