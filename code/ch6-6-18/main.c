@@ -54,8 +54,9 @@ static char *my_strstr(const char *haystack, const char *needle) {
  * ============================================================ */
 char *find_char(char const *source, char const *chars) {
     /* 参数防御 */
-    if (source == NULL || chars == NULL) return NULL;
-    if (*source == '\0' || *chars == '\0') return NULL;
+
+    if(source == NULL || chars == NULL) return NULL;
+    if(*source == '\0' || *chars == '\0')return NULL;
 
     /* 外层：遍历 source 的每个位置 p
      * 内层：检查 chars 中是否有字符 == *p */
